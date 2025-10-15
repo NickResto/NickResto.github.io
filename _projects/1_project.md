@@ -1,10 +1,10 @@
 ---
 layout: page
-title: HomeLab
+title: homelab
 description: coming soon...
 img: assets/img/12.jpg
 importance: 1
-category: personal
+category: fun
 related_publications: false
 ---
 
