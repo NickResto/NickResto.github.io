@@ -397,7 +397,7 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-homelab",
           title: 'HomeLab',
-          description: "coming soon...",
+          description: "A self-hosted lab for virtualization, storage, automation, and experimentation.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{
