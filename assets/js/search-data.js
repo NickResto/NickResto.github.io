@@ -400,6 +400,11 @@ ninja.data = [{
           description: "A self-hosted lab for virtualization, storage, automation, and experimentation.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
+            },},{id: "projects-ratemycourse",
+          title: 'RateMyCourse',
+          description: "A full-stack web application created in my WCU Computer Science Capstone course",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2_project/";
             },},{
         id: 'social-email',
         title: 'email',
