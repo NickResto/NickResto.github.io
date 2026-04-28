@@ -76,6 +76,6 @@ Below is an overview of the hardware and services powering the lab.
 ---
 
 <p align="center">
-  <img src=" assets/img/My_Homelab2.JPG" alt="MyHomeLab2" width="45%" />
-  <img src="assets/img/My_Homelab1.JPG" alt="MyHomeLab1" width="45%" />
+  <img src=" ../assets/img/My_Homelab2.JPG" alt="MyHomeLab2" width="45%" />
+  <img src="../assets/img/My_Homelab1.JPG" alt="MyHomeLab1" width="45%" />
 </p>
