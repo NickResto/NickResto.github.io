@@ -20,28 +20,24 @@ Below is an overview of the hardware and services powering the lab.
 - Storage: 1 TB SSD + 256 GB SSD
 - ASRock A380 Challenger ITX 6GB OC GPU (passed through for transcoding)
 
-**Operating System**
-- Proxmox VE Hypervisor
+**Operating System:** Proxmox VE Hypervisor
 
 **Nodes**
-- **Media Container (Ubuntu)**
+- **Media Container (Ubuntu):**
   - Mounted ZFS storage
   - Acts as separate data layer for media stack
-- **Media Server VM (Ubuntu Server)**
+
+- **Media Server VM (Ubuntu Server):**
   - Jellyfin with GPU passthrough for hardware transcoding
-  - Apps Dockerized
   - Data mounted from media container
   - Tailscale for remote access
-  - Credit to TechHutTV (https://github.com/TechHutTV/homelab.git)
-- **Web App VM (Ubuntu Server)**
-  - Hosting class project site
-  - Docker containers
-  - Cloudflare Tunnel exposing frontend
-
----
+  
+  **Portainer VM (Ubuntu Server):**
+  - Minecraft Server (itzg/minecraft-server:latest)
+  - miscellaneous Docker Containers
 
 ## NAS: ZimaBoard 832
-**Specs**
+**Specs:**
 - Intel Celeron N3450 @ 1.1 GHz
 - 8 GB RAM
 - 32 GB eMMC
@@ -49,39 +45,27 @@ Below is an overview of the hardware and services powering the lab.
   - 2× 4 TB WD Blue HDDs (mirrored ZFS pool)
   - 256 GB SSD (Pi-hole + future apps)
 
-**Operating System**
-- TrueNas
+**Operating System:** TrueNas
 
-**Uses**
+**Uses:**
 - NFS shares to Proxmox
-- Pi-hole running on SSD
+- Windows (SMB) Shares
 
----
+
+## Server Rack
+* GeeekPi T1 10" 8U Server Cabinet
+* 2 Dell 3.5" HDD Caddys
+* 12 Port Patch Panel
+* Custom hot swappable 3D printed HDD caddy tray
 
 ## Additional Hardware
 - APC UPS
-- GeeekPi T1 10" 8U Server Cabinet
 - TP-Link 5-Port Unmanaged Switch
 - eero Pro 6E Mesh WiFi Router
 
 ---
-<!---
-## Gallery
+<p align="center">
+  <img src="../assets/img/My_Homelab2.JPG" alt="MyHomeLab2" width="45%" />
+  <img src="../assets/img/My_Homelab1.JPG" alt="MyHomeLab1" width="45%" />
+</p>
 
-<div class="row">
-  <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/homelab1.jpg" title="Server + NAS" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/homelab2.jpg" title="Rack" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/homelab3.jpg" title="Proxmox Environment" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-<div class="caption">
-Hardware, rack, and virtualization dashboard.
-</div>
-
----
--->
