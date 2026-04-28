@@ -75,7 +75,15 @@ Below is an overview of the hardware and services powering the lab.
 
 ---
 
-<p align="center">
-  <img src=" ../assets/img/My_Homelab2.JPG" alt="MyHomeLab2" width="45%" />
-  <img src="../assets/img/My_Homelab1.JPG" alt="MyHomeLab1" width="45%" />
-</p>
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/My_Homelab1.JPG" 
+        title="My Homelab 1" 
+        class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/My_Homelab2.JPG" 
+        title="My Homelab 2" 
+        class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>

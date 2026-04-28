@@ -20,10 +20,15 @@ A full-stack web application for rate-my-course, a university course and profess
 
 The system follows a containerized microservices pattern orchestrated with Docker Compose. All services communicate internally through a bridge network, with Nginx acting as the primary reverse proxy and load balancer at the public entry point.
 
-<p align="center">
-  <img src="../assets/img/architecture.png" alt="Architecture" width="90%" />
-</p>
 
+<div class="row justify-content-center">
+    <div class="col-md-8 mt-3 mt-md-0">
+        {% include figure.liquid
+            path="/assets/img/architecture.png"
+            title="Architecture"
+            class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 ### Service Topology
 
 - **Frontend Service**: React-based single-page application compiled with Vite
