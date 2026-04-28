@@ -8,8 +8,8 @@ category: school
 related_publications: false
 ---
 
-
 ---
+
 # CSC-402 Software Engineering Project
 
 A full-stack web application for rate-my-course, a university course and professor rating platform. The project demonstrates modern software engineering practices through containerized microservices architecture.
@@ -19,6 +19,7 @@ A full-stack web application for rate-my-course, a university course and profess
 ## Architecture Overview
 
 The system follows a containerized microservices pattern orchestrated with Docker Compose. All services communicate internally through a bridge network, with Nginx acting as the primary reverse proxy and load balancer at the public entry point.
+
 <p align="center">
   <img src="../assets/img/architecture.png" alt="MyHomeLab2" width="90%" />
 </p>
@@ -45,12 +46,14 @@ The system follows a containerized microservices pattern orchestrated with Docke
 ### Build Process
 
 The frontend uses a multi-stage Docker build:
+
 1. **Build Stage**: Node 22 Alpine container installs dependencies and executes Vite build process, generating optimized production assets in `/dist`
 2. **Production Stage**: Nginx Alpine container serves static files from `/usr/share/nginx/html` with custom Nginx configuration for SPA routing
 
 ### Component Structure
 
 **Layout Components**:
+
 - `Layout.jsx` / `Layout.css`: Master page template with navigation framework
 - `Sidebar.jsx` / `Sidebar.css`: Navigation drawer component
 - `Subbar.jsx` / `Subbar.css`: Secondary navigation and filtering interface
@@ -58,12 +61,14 @@ The frontend uses a multi-stage Docker build:
 - `ScrollToTop.jsx`: Utility component for scroll position management
 
 **Feature Components**:
+
 - `SearchBar.jsx` / `SearchBar.css`: Course and professor search interface
 - `ReviewModal.jsx` / `ReviewModal.css`: Modal dialog for submitting reviews with complex form validation
 
 ### Page Routes
 
 **Authentication Pages**:
+
 - `Login.jsx`: User authentication with session management
 - `Verify.jsx`: Email verification flow
 - `VerifySuccess.jsx` / `VerifyFailed.jsx`: Verification status pages
@@ -71,6 +76,7 @@ The frontend uses a multi-stage Docker build:
 - `AccountSettings.jsx`: User account management
 
 **Content Pages**:
+
 - `Majors.jsx` / `MajorPage.jsx`: Major listing and major-specific course view
 - `Ratings.jsx`: Course ratings and reviews display with filtering
 - `Professors.jsx`: Professor directory and ratings
@@ -83,6 +89,7 @@ The frontend uses a multi-stage Docker build:
 ### API Integration
 
 `api.js` provides a centralized Axios instance configured with:
+
 - Base URL pointing to backend `/api` endpoint
 - Default request/response interceptors
 - Automatic header configuration
@@ -94,6 +101,7 @@ Global styles defined in `index.css` establish design tokens and CSS variables. 
 ### Build Output
 
 The Vite build process produces:
+
 - Optimized JavaScript bundles with tree-shaking
 - Minified CSS with vendor prefixing
 - Hashed asset filenames for cache invalidation
@@ -133,6 +141,7 @@ The Vite build process produces:
 ### Route Modules
 
 **Authentication** (`authRoutes.js`):
+
 - User registration with email verification
 - Login with session creation
 - Logout with session termination
@@ -140,12 +149,14 @@ The Vite build process produces:
 - Account deletion
 
 **Courses** (`coursesRoutes.js`):
+
 - List courses with pagination
 - Retrieve course details with associated reviews
 - Filter courses by major
 - Search courses by name or code
 
 **Reviews** (`reviewsRoutes.js`):
+
 - Create course reviews with rating, difficulty, workload metrics
 - Retrieve reviews by course or professor
 - Update/delete user-authored reviews
@@ -153,16 +164,19 @@ The Vite build process produces:
 - Pagination and sorting
 
 **Majors** (`majorRoutes.js`):
+
 - List all academic majors
 - Get major details with course listings
 - Course distribution within major
 
 **Professors** (`profRoutes.js`):
+
 - Professor directory with ratings
 - Professor-specific review aggregation
 - Professor assignment to courses
 
 **AI Integration** (`aiRoutes.js`):
+
 - Google Generative AI integration for course recommendations
 - Natural language query processing
 - Intelligent course suggestions based on user preferences and academic history
@@ -170,11 +184,13 @@ The Vite build process produces:
 ### Middleware Layer
 
 **Authentication Middleware** (`auth.js`):
+
 - Session validation for protected routes
 - JWT token verification
 - User context injection into request object
 
 **Pagination Middleware** (`paginateMiddleware.js`):
+
 - Standardized pagination parameter parsing (page, limit, offset)
 - Database query offset calculation
 - Consistent pagination response formatting
@@ -182,6 +198,7 @@ The Vite build process produces:
 ### Database Connectivity
 
 The backend maintains a persistent connection pool to PostgreSQL:
+
 - Pool size configured for concurrent request handling
 - Connection timeout and retry logic
 - Automatic connection recycling
@@ -189,6 +206,7 @@ The backend maintains a persistent connection pool to PostgreSQL:
 ### Session Management
 
 Sessions persist in PostgreSQL via `connect-pg-simple` adapter:
+
 - Stores session data in `session` table
 - 24-hour cookie maximum age
 - HTTPOnly flag prevents client-side script access
@@ -207,6 +225,7 @@ The database (`rate_my_course`) serves as the single source of truth for all app
 Tables created in `01_create_create_tables.sql`:
 
 **Core Entity Tables**:
+
 - `users`: User accounts with authentication credentials, email, verification status
 - `majors`: Academic major definitions and metadata
 - `professors`: Faculty member directory with department affiliation
@@ -214,11 +233,13 @@ Tables created in `01_create_create_tables.sql`:
 - `reviews`: User-submitted reviews linking courses/professors with ratings and commentary
 
 **Session Table**:
+
 - `session`: Express session store for user authentication state
 
 ### Data Population
 
 `rate_my_course_data.sql` contains:
+
 - Seed data for 50+ majors representing common academic disciplines
 - Comprehensive course catalog across all majors
 - Professor directory
@@ -227,6 +248,7 @@ Tables created in `01_create_create_tables.sql`:
 ### Initialization Process
 
 Database initialization occurs automatically on container startup:
+
 - `/docker-entrypoint-initdb.d` directory mounted in database container
 - SQL scripts in this directory execute sequentially on first container run
 - Idempotent schema creation prevents errors on container restart
@@ -244,6 +266,7 @@ PostgreSQL data volume (`pgdata`) persists between container restarts, preservin
 `docker-compose.yml` defines the complete application stack with four services:
 
 **Backend Service**:
+
 - Builds from `./backend/Dockerfile`
 - Port 8080 exposed internally only
 - Environment variables passed from `.env`
@@ -251,12 +274,14 @@ PostgreSQL data volume (`pgdata`) persists between container restarts, preservin
 - Restart policy: unless-stopped
 
 **Frontend Service**:
+
 - Builds from `./frontend/Dockerfile`
 - Port 80 exposed internally only
 - Depends on backend service
 - Restart policy: unless-stopped
 
 **Database Service**:
+
 - Uses PostgreSQL 15 official image
 - Volume mounted for data persistence
 - SQL initialization scripts mounted
@@ -264,6 +289,7 @@ PostgreSQL data volume (`pgdata`) persists between container restarts, preservin
 - Restart policy: always
 
 **Nginx Service**:
+
 - Uses official Nginx image
 - Mounts custom configuration from `./nginx/nginx.conf`
 - Port 80 mapped to host (public entry point)
@@ -274,10 +300,12 @@ PostgreSQL data volume (`pgdata`) persists between container restarts, preservin
 ### Network Configuration
 
 Two networks defined:
+
 - **internal**: Private network for service-to-service communication (backend, frontend, database)
 - **public**: External network for client access (only Nginx)
 
 This topology ensures:
+
 - Database is never directly exposed to the internet
 - Backend API is only accessible through Nginx
 - Frontend assets served through Nginx
@@ -286,6 +314,7 @@ This topology ensures:
 ### Environment Variables
 
 `.env` file configures:
+
 - `NODE_ENV`: Application environment (production/development)
 - `BACKEND_PORT`: Backend service port
 - `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_PORT`: Database credentials

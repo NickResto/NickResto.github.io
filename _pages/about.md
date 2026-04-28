@@ -2,11 +2,11 @@
 layout: about
 title: about
 permalink: /
-subtitle: 
+subtitle:
 
 profile:
   align: right
-  image: 
+  image:
   image_circular: false # crops the image to make it circular
   more_info: >
     <p></p>
@@ -27,8 +27,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I'm a senior Computer Science major at [West Chester University of Pennsylvania](https://www.wcupa.edu/sciences-mathematics/computerScience/). I currently work as a telecommunications analyst intern as well as a computer/iPhone repair technition. 
+I'm a senior Computer Science major at [West Chester University of Pennsylvania](https://www.wcupa.edu/sciences-mathematics/computerScience/). I currently work as a telecommunications analyst intern as well as a computer/iPhone repair technition.
 
-Outside of class, I spend much of my time experimenting in my [homelab](https://nickresto.github.io/projects/). I create and manage virtual machines with Proxmox, manage network services like Pi-hole and TrueNAS, and use Docker to host self-deployed applications. I also enjoy designing and building custom computers, repairing iPhones, and finding new ways to bring automation into my everyday life. 
+Outside of class, I spend much of my time experimenting in my [homelab](https://nickresto.github.io/projects/). I create and manage virtual machines with Proxmox, manage network services like Pi-hole and TrueNAS, and use Docker to host self-deployed applications. I also enjoy designing and building custom computers, repairing iPhones, and finding new ways to bring automation into my everyday life.
 
 In the future I hope to work in a field that combines systems engineering, networking, and cloud technologies, where I can keep learning and applying practical, hands-on skills to real-world infrastructure projects.
